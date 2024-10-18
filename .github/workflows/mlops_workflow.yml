@@ -28,20 +28,3 @@ jobs:
       run: pytest
     - name: Clean up .env
       run: rm .env
-
-  build:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build Docker image
-      run: docker build -t your-docker-image-name .
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-    - name: Push Docker image
-      run: |
-        docker tag your-docker-image-name your-dockerhub-username/your-docker-image-name:latest
-        docker push your-dockerhub-username/your-docker-image-name:latest
