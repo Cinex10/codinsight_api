@@ -1,0 +1,9 @@
+fastapi
+pydantic[email]
+requests
+pydantic-settings
+pymongo
+pytest
+httpx
+groq
+pytest-asyncio
