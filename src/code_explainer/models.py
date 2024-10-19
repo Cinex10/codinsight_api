@@ -16,7 +16,7 @@ class UserModel(BaseModel):
         json_encoders = {ObjectId: str}
         )
     
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    id: Optional[PyObjectId] = Field(alias="_id", default_factory=lambda: str(ObjectId()))
     email: EmailStr = Field(...)
     password: str = Field(...)
 
@@ -27,7 +27,7 @@ class CompletionModel(BaseModel):
         json_encoders = {ObjectId: str}
         )
     
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    id: Optional[PyObjectId] = Field(alias="_id", default_factory=lambda: str(ObjectId()))
     prompt: str = Field(...)
     completion: str = Field(...)
     inference_duration_in_ms: float = Field(gt=0)

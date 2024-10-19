@@ -1,19 +1,15 @@
-from pydantic import BaseModel, EmailStr, Field
-from typing import Optional, List
-from datetime import datetime
+from pydantic import BaseModel, Field
+from typing import List
 
 # Completion Schemas
 class CompletionCreate(BaseModel):
     prompt: str = Field(..., min_length=1)
-    user_ip: Optional[str] = None
-    user_device: Optional[str] = None
 
 class CompletionResponse(BaseModel):
-    id: str
     prompt: str
     completion: str
 
-class CompletionUpdate(BaseModel):
+class CompletionRate(BaseModel):
     rating: int = Field(..., ge=1, le=5)
 
 class CompletionList(BaseModel):
