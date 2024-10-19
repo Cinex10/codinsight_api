@@ -1,4 +1,4 @@
-fastapi
+fastapi[standard]
 pydantic[email]
 requests
 pydantic-settings
@@ -7,3 +7,4 @@ pytest
 httpx
 groq
 pytest-asyncio
+uvicorn
