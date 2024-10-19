@@ -9,12 +9,15 @@ class Settings(BaseSettings):
     
     # API settings
     API_V1_STR: str = "/api/v1"
-    PROJECT_NAME: str = "Codinsight"
+    PROJECT_NAME: str = "Project Title"
+    DESCRIPTION: str = "Project Description"
+    VERSION: str = "1.0.0"
     
     # Security settings
     SECRET_KEY: str = "YOUR_SECRET_KEY_HERE"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ALLOWED_ORIGINS: str = "*"
     
     # AWS settings
     AWS_ACCESS_KEY_ID: str = "YOUR_AWS_ACCESS_KEY_ID"
@@ -30,4 +33,3 @@ def get_settings():
 
 # Usage
 settings = get_settings()
-print(settings.DATABASE_URL)
