@@ -37,10 +37,6 @@ jobs:
         echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
         echo "LLM_API_KEY=${{ secrets.LLM_API_KEY }}" >> .env
         echo "MODEL=${{ secrets.MODEL }}" >> .env
-        echo "API_V1_STR=${{ secrets.API_V1_STR }}" >> .env
-        echo "PROJECT_NAME=${{ secrets.PROJECT_NAME }}" >> .env
-        echo "DESCRIPTION=${{ secrets.DESCRIPTION }}" >> .env
-        echo "VERSION=${{ secrets.VERSION }}" >> .env
 
     - name: Set up QEMU for arm64
       run: |
@@ -64,8 +60,5 @@ jobs:
         docker buildx create --use
         docker buildx inspect --bootstrap
         docker buildx build --platform linux/arm64 -t cinex10/codinsight:latest --push .
-    - name: Push Docker image
-      run: |
-        docker push cinex10/codinsight:latest
     - name: Clean up .env
       run: rm .env
