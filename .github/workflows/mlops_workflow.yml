@@ -24,23 +24,34 @@ jobs:
         echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
         echo "LLM_API_KEY=${{ secrets.LLM_API_KEY }}" >> .env
         echo "MODEL=${{ secrets.MODEL }}" >> .env
+        echo "API_V1_STR=${{ secrets.API_V1_STR }}" >> .env
+        echo "PROJECT_NAME=${{ secrets.PROJECT_NAME }}" >> .env
+        echo "DESCRIPTION=${{ secrets.DESCRIPTION }}" >> .env
+        echo "VERSION=${{ secrets.VERSION }}" >> .env
+        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
+        echo "ALGORITHM=${{ secrets.ALGORITHM }}" >> .env
+        echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
+        echo "ALLOWED_ORIGINS=${{ secrets.ALLOWED_ORIGINS }}" >> .env
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> .env
+        echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> .env
     - name: Run tests
       run: pytest
-    - name: Clean up .env
-      run: rm .env
 
   build:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v2
     - name: Build Docker image
       run: docker build -t cinex10/codinsight:latest .
     - name: Log in to Docker Hub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
     - name: Push Docker image
       run: |
         docker push cinex10/codinsight:latest
+    - name: Clean up .env
+      run: rm .env
