@@ -28,13 +28,6 @@ jobs:
         echo "PROJECT_NAME=${{ secrets.PROJECT_NAME }}" >> .env
         echo "DESCRIPTION=${{ secrets.DESCRIPTION }}" >> .env
         echo "VERSION=${{ secrets.VERSION }}" >> .env
-        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
-        echo "ALGORITHM=${{ secrets.ALGORITHM }}" >> .env
-        echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
-        echo "ALLOWED_ORIGINS=${{ secrets.ALLOWED_ORIGINS }}" >> .env
-        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
-        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> .env
-        echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> .env
     - name: Run tests
       run: pytest
 
