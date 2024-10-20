@@ -23,7 +23,7 @@ app.include_router(code_explainer_router, prefix="/code-explain", tags=["Code Ex
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the Code Explanation API"}
+    return {"message": "Welcome to the Code Explanation API", "version": settings.VERSION}
 
 @app.get("/health")
 async def health_check():
