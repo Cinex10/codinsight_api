@@ -1,2 +1,21 @@
 env
 .pytest_cache
+*.pyc
+__pycache__/
+
+# Development files
+.git
+.gitignore
+.vscode/
+.idea/
+
+# Local configuration files
+*.log
+
+# Documentation
+README.md
+docs/
+
+# Test files
+tests/
+*.test.py
