@@ -37,6 +37,9 @@ jobs:
         echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
         echo "LLM_API_KEY=${{ secrets.LLM_API_KEY }}" >> .env
         echo "MODEL=${{ secrets.MODEL }}" >> .env
+        echo "PROJECT_NAME=${{ vars.PROJECT_NAME }}" >> .env
+        echo "DESCRIPTION=${{ vars.DESCRIPTION }}" >> .env
+        echo "VERSION=${{ vars.VERSION }}" >> .env
 
     - name: Set up QEMU for arm64
       run: |
