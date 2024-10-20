@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -33,9 +33,18 @@ jobs:
 
   build:
     needs: test
-    runs-on: macos-15
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Create .env file
+      run: |
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+        echo "LLM_API_KEY=${{ secrets.LLM_API_KEY }}" >> .env
+        echo "MODEL=${{ secrets.MODEL }}" >> .env
+        echo "API_V1_STR=${{ secrets.API_V1_STR }}" >> .env
+        echo "PROJECT_NAME=${{ secrets.PROJECT_NAME }}" >> .env
+        echo "DESCRIPTION=${{ secrets.DESCRIPTION }}" >> .env
+        echo "VERSION=${{ secrets.VERSION }}" >> .env
     - name: Build Docker image
       run: docker build -t cinex10/codinsight:latest .
     - name: Log in to Docker Hub
