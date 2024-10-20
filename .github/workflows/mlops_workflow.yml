@@ -28,3 +28,19 @@ jobs:
       run: pytest
     - name: Clean up .env
       run: rm .env
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Docker image
+      run: docker build -t cinex10/codinsight:latest .
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Push Docker image
+      run: |
+        docker push cinex10/codinsight:latest
