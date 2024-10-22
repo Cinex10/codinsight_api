@@ -88,10 +88,7 @@ jobs:
         push: true
         platforms: linux/amd64,linux/arm64
         tags: |
-          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_BACKEND_IMAGE:${{ env.SHORT_SHA }}
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_BACKEND_IMAGE:latest
-          cinex10/codinsight:${{ env.SHORT_SHA }}
-          cinex10/codinsight:latest
     
     - name: Clean up .env
       run: rm .env
