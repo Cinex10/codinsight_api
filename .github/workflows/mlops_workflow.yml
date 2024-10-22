@@ -90,6 +90,10 @@ jobs:
         platforms: linux/amd64,linux/arm64
         tags: |
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_DEFAULT_REGION}}.amazonaws.com/${{ env.ECR_BACKEND_IMAGE}}:latest
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_DEFAULT_REGION}}.amazonaws.com/${{ env.ECR_BACKEND_IMAGE}}:${{ env.SHORT_SHA }}
+          
+          cinex10/codinsight:latest
+          cinex10/codinsight:${{ env.SHORT_SHA }}
     
     - name: Clean up .env
       run: rm .env
