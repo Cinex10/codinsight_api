@@ -2,6 +2,8 @@
 
 A powerful backend service that powers the Codinsight VS Code extension, helping developers understand code through AI-powered explanations.
 
+The extension is available to use from [this link.](https://marketplace.visualstudio.com/items?itemName=Cinex10.codinsight)
+
 ## Overview 🎯
 
 Codinsight is a VS Code extension that provides intelligent code explanations. It leverages Large Language Models to analyze and explain code snippets, making code comprehension faster and easier.
